@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "audit-tracker",
+  "name": "@arkecosystem/audit-tracker",
   "description": "Provides AuditTracker Plugin for Ark Core",
   "version": "0.0.1",
   "contributors": [

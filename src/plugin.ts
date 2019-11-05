@@ -8,14 +8,14 @@ export const plugin: Container.IPluginDescriptor = {
   defaults,
   alias: "audit-tracker",
   async register(container: Container.IContainer, options) {
-    container.resolvePlugin<Logger.ILogger>("logger").info("Registering custom transaction");
+    container.resolvePlugin<Logger.ILogger>("logger").info("Registering custom transactions");
     Handlers.Registry.registerTransactionHandler(InvoiceAddedTransactionHandler);
     Handlers.Registry.registerTransactionHandler(InvoiceCanceledTransactionHandler);
     Handlers.Registry.registerTransactionHandler(InvoicePaidTransactionHandler);
     Handlers.Registry.registerTransactionHandler(InvoiceSplitTransactionHandler);
   },
   async deregister(container: Container.IContainer, options) {
-    container.resolvePlugin<Logger.ILogger>("logger").info("Deregistering custom transaction");
-    return container.resolvePlugin("audit-tracker").exit();
+    container.resolvePlugin<Logger.ILogger>("logger").info("Deregistering custom transactions");
+    // return container.resolvePlugin("audit-tracker").exit();
   }
 };
