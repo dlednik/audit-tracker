@@ -73,16 +73,16 @@ export class InvoiceAddedTransaction extends Transactions.Transaction {
         buffer.writeUint64(Long.fromString(invoiceAdded.amount.toString()));
 
         buffer.writeUint8(currencyBytes.length);
-        buffer.append(currencyBytes, "hex");
+        buffer.append(currencyBytes);
 
         buffer.writeUint8(dateBytes.length);
-        buffer.append(dateBytes, "hex");
+        buffer.append(dateBytes);
 
         buffer.writeUint8(invoiceBytes.length);
-        buffer.append(invoiceBytes, "hex");
+        buffer.append(invoiceBytes);
 
         buffer.writeUint8(customerBytes.length);
-        buffer.append(customerBytes, "hex");
+        buffer.append(customerBytes);
     
         // console.log(buffer);
         // buffer.offset = 0;

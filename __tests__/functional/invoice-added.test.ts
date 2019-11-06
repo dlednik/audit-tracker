@@ -1,8 +1,9 @@
 import "jest-extended";
 
-import { Identities, Managers, /*Transactions, */Utils } from "@arkecosystem/crypto/dist"; 
+import { Identities, Managers, Transactions, Utils } from "@arkecosystem/crypto/dist"; 
 import { TransactionFactory } from "../helpers/transaction-factory";
-import * as support from "../../../../../core/__tests__/functional/transaction-forging/__support__";
+import { InvoiceAddedTransaction } from "../../src/transactions"
+import * as support from "./__support__";
 
 const { passphrase/*, secondPassphrase*/ } = support.passphrases;
 
@@ -11,11 +12,11 @@ const { passphrase/*, secondPassphrase*/ } = support.passphrases;
 
 const amountToSatoshi = value => Utils.BigNumber.make(Math.floor(value * 1e8));
 
-Managers.configManager.setFromPreset("testnet");
-Managers.configManager.getMilestone().aip11 = true;
-// Transactions.TransactionRegistry.registerTransactionType(InvoiceAddedTransaction);
-
 describe("Transaction Forging - InvoiceAdded registration", () => {
+    Managers.configManager.setFromPreset("testnet");
+    Managers.configManager.getMilestone().aip11 = true;
+    Transactions.TransactionRegistry.registerTransactionType(InvoiceAddedTransaction);
+
     describe("Signed with 1 Passphrase", () => {
         it("should broadcast, accept and forge it [Signed with 1 Passphase]", async () => {
             const invoiceAsset = {
@@ -28,7 +29,7 @@ describe("Transaction Forging - InvoiceAdded registration", () => {
 
             const initialFunds = TransactionFactory.transfer(Identities.Address.fromPassphrase(passphrase), 100 * 1e8)
                 .withPassphrase("clay harbor enemy utility margin pretty hub comic piece aerobic umbrella acquire")
-                .withNonce(Utils.BigNumber.make(2))
+                .withNonce(Utils.BigNumber.make(4))
                 .createOne();
 
             await expect(initialFunds).toBeAccepted();

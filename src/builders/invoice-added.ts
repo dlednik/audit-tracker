@@ -1,5 +1,4 @@
 import { Interfaces, Transactions, Utils } from "@arkecosystem/crypto";
-import { AuditTrackerType, InvoiceTransactionGroup } from "../enums";
 import { InvoiceAddedTransaction } from "../transactions";
 import { IInvoiceAddedAsset } from "../interfaces";
 
@@ -7,8 +6,8 @@ export class InvoiceAddedBuilder extends Transactions.TransactionBuilder<Invoice
     constructor() {
         super();
         this.data.version = 2;
-        this.data.typeGroup = InvoiceTransactionGroup;
-        this.data.type = AuditTrackerType.InvoiceAdded;
+        this.data.typeGroup = InvoiceAddedTransaction.typeGroup;
+        this.data.type = InvoiceAddedTransaction.type;
         this.data.fee = InvoiceAddedTransaction.staticFee();
         this.data.amount = Utils.BigNumber.ZERO;
         this.data.asset = { invoiceAdded: {} };

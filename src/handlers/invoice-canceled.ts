@@ -1,6 +1,6 @@
 import { Database, EventEmitter, State, TransactionPool } from "@arkecosystem/core-interfaces";
 import { Handlers } from "@arkecosystem/core-transactions";
-import { Interfaces, Managers, Transactions, Utils } from "@arkecosystem/crypto";
+import { Interfaces, Managers, Transactions } from "@arkecosystem/crypto";
 import { InvoiceCanceledAssetError } from "../errors";
 import { AuditTrackerType } from "../enums";
 import { AuditTrackerEvents } from "../events";
@@ -23,14 +23,14 @@ export class InvoiceCanceledTransactionHandler extends Handlers.TransactionHandl
         return !!Managers.configManager.getMilestone().aip11;
     }
 
-    public dynamicFee(
-        transaction: Interfaces.ITransaction,
-        addonBytes: number,
-        satoshiPerByte: number,
-    ): Utils.BigNumber {
-        // override dynamicFee calculation as this is a zero-fee transaction
-        return Utils.BigNumber.ZERO;
-    }
+    // public dynamicFee(
+    //     transaction: Interfaces.ITransaction,
+    //     addonBytes: number,
+    //     satoshiPerByte: number,
+    // ): Utils.BigNumber {
+    //     // override dynamicFee calculation as this is a zero-fee transaction
+    //     return Utils.BigNumber.ZERO;
+    // }
 
     public async bootstrap(connection: Database.IConnection, walletManager: State.IWalletManager): Promise<void> {
         return;

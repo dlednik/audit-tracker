@@ -23,14 +23,14 @@ export class InvoiceSplitTransactionHandler extends Handlers.TransactionHandler 
         return !!Managers.configManager.getMilestone().aip11;
     }
 
-    public dynamicFee(
-        transaction: Interfaces.ITransaction,
-        addonBytes: number,
-        satoshiPerByte: number,
-    ): Utils.BigNumber {
-        // override dynamicFee calculation as this is a zero-fee transaction
-        return Utils.BigNumber.ZERO;
-    }
+    // public dynamicFee(
+    //     transaction: Interfaces.ITransaction,
+    //     addonBytes: number,
+    //     satoshiPerByte: number,
+    // ): Utils.BigNumber {
+    //     // override dynamicFee calculation as this is a zero-fee transaction
+    //     return Utils.BigNumber.ZERO;
+    // }
 
     public async bootstrap(connection: Database.IConnection, walletManager: State.IWalletManager): Promise<void> {
         return;

@@ -8,6 +8,10 @@ export interface IInvoiceAddedAsset {
     customer: string;
 }
 
+export interface IInvoiceAddedWalletAttributes {
+    [invoice: string]: boolean;
+}
+
 export interface IInvoicePaidAsset {
     hash: string;
     ids: string[];

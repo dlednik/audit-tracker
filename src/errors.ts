@@ -7,6 +7,12 @@ export class InvoiceAddedAssetError extends Errors.TransactionError {
     }
 }
 
+export class InvoiceAddedAlreadyExistsError extends Errors.TransactionError {
+    constructor() {
+        super(`Failed to apply transaction, because invoice is already present.`);
+    }
+}
+
 export class InvoiceCanceledAssetError extends Errors.TransactionError {
     constructor() {
         super(`Failed to apply transaction, because wallet is not a invoiceCanceled.`);
